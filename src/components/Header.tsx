@@ -54,6 +54,14 @@ const Header: React.FC = () => {
           </List.Item>
           <List.Item
             onClick={() => {
+              navigate("/practice");
+              setVisible(false);
+            }}
+          >
+            手寫練習
+          </List.Item>
+          <List.Item
+            onClick={() => {
               navigate("/history");
               setVisible(false);
             }}

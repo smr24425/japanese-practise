@@ -6,6 +6,8 @@ import Result from "./pages/Result";
 import "./App.css";
 import Layout from "./Layout";
 import HistoryPage from "./pages/History";
+import PracticeList from "./pages/PracticeList";
+import HandwritePractice from "./pages/HandwritePractice";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,11 @@ const App: React.FC = () => {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/practice" element={<PracticeList />} />
+          <Route
+            path="/practice/handwrite/:romaji"
+            element={<HandwritePractice />}
+          />
         </Routes>
       </Layout>
     </div>
