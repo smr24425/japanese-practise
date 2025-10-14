@@ -20,7 +20,7 @@ unstableSetRender((node, container: any) => {
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/japanese-practise">
     <HistoryProvider>
       <App />
     </HistoryProvider>
