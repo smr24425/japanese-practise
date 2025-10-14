@@ -14,7 +14,7 @@ export default defineConfig({
         theme_color: "#a788d9",
         background_color: "#ffffff",
         display: "standalone",
-        start_url: "/",
+        start_url: "/japanese-practise/",
         icons: [
           {
             src: "icons/web-app-manifest-192x192.png",
