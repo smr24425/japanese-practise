@@ -100,16 +100,15 @@ const HandwritePractice: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: 16 }}>
-      <h2>
+    <div className="page-container">
+      <h1 style={{ fontSize: 42 }}>
         練習書寫: {kanaItem.hiragana} / {kanaItem.katakana}
-      </h2>
+      </h1>
 
       <canvas
         ref={canvasRef}
-        width={300}
-        height={300}
-        style={{ border: "1px solid #ccc", touchAction: "none" }}
+        height={400}
+        style={{ width: "100%", border: "1px solid #ccc", touchAction: "none" }}
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={endDrawing}
