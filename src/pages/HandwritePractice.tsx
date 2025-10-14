@@ -7,7 +7,6 @@ const HandwritePractice: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 預期傳入整個kana item
   const kanaItem = location.state as {
     hiragana: string;
     katakana: string;
@@ -15,25 +14,47 @@ const HandwritePractice: React.FC = () => {
   };
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [drawing, setDrawing] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null); // 用來取得寬度
 
+  const [drawing, setDrawing] = useState(false);
+  const [canvasSize, setCanvasSize] = useState({ width: 300, height: 300 }); // 初始大小
+
+  // 動態調整canvas大小
+  useEffect(() => {
+    function updateSize() {
+      if (!containerRef.current) return;
+      const width = containerRef.current.clientWidth;
+      // 你可以依比例設定高度，這裡用正方形示範
+      const height = width;
+
+      setCanvasSize({ width, height });
+    }
+
+    updateSize(); // 初始化執行一次
+    window.addEventListener("resize", updateSize);
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  // 初始化畫布背景和畫筆樣式，當canvasSize變動時也重新設定
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    canvas.width = canvasSize.width;
+    canvas.height = canvasSize.height;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // 初始化畫布白色背景
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 設置畫筆樣式
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineWidth = 4;
     ctx.strokeStyle = "#222";
-  }, []);
+  }, [canvasSize]);
 
   const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
     setDrawing(true);
@@ -46,7 +67,7 @@ const HandwritePractice: React.FC = () => {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    ctx.beginPath(); // 斷開路徑，避免連續畫線
+    ctx.beginPath();
   };
 
   const draw = (e: React.MouseEvent | React.TouchEvent) => {
@@ -100,14 +121,17 @@ const HandwritePractice: React.FC = () => {
   }
 
   return (
-    <div className="page-container">
+    <div
+      className="page-container"
+      ref={containerRef}
+      style={{ width: "100%" }}
+    >
       <h1 style={{ fontSize: 42 }}>
         練習書寫: {kanaItem.hiragana} / {kanaItem.katakana}
       </h1>
 
       <canvas
         ref={canvasRef}
-        height={400}
         style={{ width: "100%", border: "1px solid #ccc", touchAction: "none" }}
         onMouseDown={startDrawing}
         onMouseMove={draw}
