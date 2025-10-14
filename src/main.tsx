@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM, { createRoot } from "react-dom/client";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./index.css";
 import { HistoryProvider } from "./contexts/HistoryContext";
 import "antd-mobile/es/global"; // antd-mobile 全局樣式
@@ -20,9 +20,9 @@ unstableSetRender((node, container: any) => {
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter basename="/japanese-practise">
+  <HashRouter>
     <HistoryProvider>
       <App />
     </HistoryProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
