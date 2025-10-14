@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  base: "/japanese-practise/", //repo name
+  base: "./", //repo name
   plugins: [
     react(),
     VitePWA({
@@ -14,7 +14,7 @@ export default defineConfig({
         theme_color: "#a788d9",
         background_color: "#ffffff",
         display: "standalone",
-        start_url: "/japanese-practise/",
+        start_url: "/",
         icons: [
           {
             src: "icons/web-app-manifest-192x192.png",
