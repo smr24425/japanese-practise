@@ -126,9 +126,11 @@ const HandwritePractice: React.FC = () => {
       ref={containerRef}
       style={{ width: "100%" }}
     >
-      <h1 style={{ fontSize: 42 }}>
+      <div style={{ fontSize: 42 }}>
         練習書寫: {kanaItem.hiragana} / {kanaItem.katakana}
-      </h1>
+      </div>
+
+      <div style={{ fontSize: 36, marginBottom: 12 }}>{kanaItem.romaji}</div>
 
       <canvas
         ref={canvasRef}
