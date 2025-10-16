@@ -1,6 +1,8 @@
-## 📘 關於本專案
+## 📘 日文五十音練習
 
-這是一個基於 React + TypeScript + Ant Design Mobile 的日文五十音練習工具。
+這是一個日文五十音練習器，包含平假名模式、片假名模式、混合模式、練習紀錄、無廣告、可離線使用。
+
+[前往 Demo](https://smr24425.github.io/japanese-practise/)
 
 ---
 
