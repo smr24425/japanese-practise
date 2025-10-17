@@ -1,8 +1,6 @@
 import React from "react";
-import { NavBar } from "antd-mobile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { SafeArea } from "antd-mobile";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -13,8 +11,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         flexDirection: "column",
       }}
     >
-      <SafeArea position={"top"} />
-
       <Header />
       <main
         style={{
@@ -28,7 +24,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         {children}
       </main>
       <Footer />
-      <SafeArea position={"bottom"} />
     </div>
   );
 };
