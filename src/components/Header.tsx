@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, NavBar, Popup, List, Badge } from "antd-mobile";
+import { Button, NavBar, Popup, List, Badge, SafeArea } from "antd-mobile";
 import { getPracticeRecords } from "../utils/storage";
 
 const Header: React.FC = () => {
@@ -78,6 +78,7 @@ const Header: React.FC = () => {
             最近結果
           </List.Item>
         </List>
+        <SafeArea position="bottom" />
       </Popup>
     </>
   );
